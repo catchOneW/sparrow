@@ -18,5 +18,9 @@
   "homepage": "https://github.com/catchOneW/sparrow#readme",
   "dependencies": {
     "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.9.7",
+    "vue-template-compiler": "^2.5.17"
   }
 }
