@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vue serve app.vue"
   },
   "repository": {
     "type": "git",
@@ -16,11 +17,8 @@
     "url": "https://github.com/catchOneW/sparrow/issues"
   },
   "homepage": "https://github.com/catchOneW/sparrow#readme",
-  "dependencies": {
-    "vue": "^2.5.17"
-  },
   "devDependencies": {
-    "parcel-bundler": "^1.9.7",
-    "vue-template-compiler": "^2.5.17"
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0"
   }
 }
