@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --fs: 14px;
+            --h: 32px;
+        }
+    </style>
+    <style>
+        .g-button {
+            height: var(--h);
+            font-size: var(--fs);
+            padding: 0 1em;
+            border-radius: 4px;
+        }
+
+        .g-button:hover {
+            border: 1px solid red;
+        }
+
+        .g-button:active {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <g-button></g-button>
+        <g-button></g-button>
+        <g-button></g-button>
+        <g-button></g-button>
+    </div>
+</body>
+<script src="./node_modules/vue/dist/vue.min.js"></script>
+<script src="./button.js"> </script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            a: 1111111111
+        }
+    })
+</script>
+
+</html>

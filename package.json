@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/catchOneW/sparrow/issues"
   },
-  "homepage": "https://github.com/catchOneW/sparrow#readme"
+  "homepage": "https://github.com/catchOneW/sparrow#readme",
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
 }
