@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div id="a">
+    </div>
     <ButtonGroup>
       <Button @click="click">
         提交a
@@ -18,17 +20,22 @@
       </Button>
       <p>11111111</p>
     </ButtonGroup>
+
   </div>
 </template>
 <script>
 import './src/js/iconfont.js'
 import Vue from 'vue'
-import Button from './src/base/Button'
-Vue.component('Button', Button)
 import svgIcon from './src/base/svgIcon'
-Vue.component('svgIcon', svgIcon)
+import Button from './src/base/Button'
 import ButtonGroup from './src/base/ButtonGroup'
+Vue.component('svgIcon', svgIcon)
+Vue.component('Button', Button)
 Vue.component('ButtonGroup', ButtonGroup)
+//test
+import chai from 'chai'
+var expect = chai.expect
+
 export default {
   data() {
     return {
@@ -37,6 +44,60 @@ export default {
   },
   methods: {
     click() {}
+  },
+  mounted() {
+    {
+      let GButton = Vue.extend(Button)
+      let b = new GButton({
+        propsData: {
+          icon: 'icon-down'
+        }
+      })
+      b.$mount()
+      expect(b.$el.querySelector('use').getAttribute('xlink:href')).to.equal(
+        '#icon-down'
+      )
+      b.$el.remove()
+      b.$destroy()
+    }
+    {
+      let div = document.createElement('div')
+      document.body.appendChild(div)
+      let GButton = Vue.extend(Button)
+      let b = new GButton({
+        propsData: {
+          icon: 'icon-down',
+          dir: 'r'
+        }
+      })
+      b.$mount(div)
+      let svg = b.$el.querySelector('svg')
+      let { order } = window.getComputedStyle(svg)
+      expect(order).to.equal('1')
+      b.$el.remove()
+      b.$destroy()
+    }
+    {
+      let div = document.createElement('div')
+      document.body.appendChild(div)
+      let GButton = Vue.extend(Button)
+      let b = new GButton({
+        propsData: {
+          icon: 'icon-down',
+          dir: 'r'
+        }
+      })
+      b.$mount(div)
+      b.$on('click', function() {
+        console.log(1)
+      })
+      b.$el.click()
+      // expect(b.$el.querySelector('svg').getAttribute('class')).to.equal(
+      //   'icon-loading'
+      // )
+      b.$el.remove()
+      b.$destroy()
+    }
   }
 }
 </script>
