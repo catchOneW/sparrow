@@ -34,7 +34,7 @@ Vue.component('Button', Button)
 Vue.component('ButtonGroup', ButtonGroup)
 //test
 import chai from 'chai'
-import spies  from 'chai-spies'
+import spies from 'chai-spies'
 chai.use(spies)
 let expect=chai.expect
 
@@ -90,8 +90,7 @@ export default {
         }
       })
       b.$mount(div)
-
-      let spy = chai.spies(() => {
+      let spy = chai.spy(() => {
       })
       b.$on('click',spy)
       b.$el.click()
