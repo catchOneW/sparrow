@@ -34,7 +34,9 @@ Vue.component('Button', Button)
 Vue.component('ButtonGroup', ButtonGroup)
 //test
 import chai from 'chai'
-var expect = chai.expect
+import spies  from 'chai-spies'
+chai.use(spies)
+let expect=chai.expect
 
 export default {
   data() {
@@ -88,13 +90,12 @@ export default {
         }
       })
       b.$mount(div)
-      b.$on('click', function() {
-        console.log(1)
+
+      let spy = chai.spies(() => {
       })
+      b.$on('click',spy)
       b.$el.click()
-      // expect(b.$el.querySelector('svg').getAttribute('class')).to.equal(
-      //   'icon-loading'
-      // )
+      expect(spy).have.been.called()
       b.$el.remove()
       b.$destroy()
     }
