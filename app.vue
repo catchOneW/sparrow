@@ -21,6 +21,11 @@
       <p>11111111</p>
     </ButtonGroup>
 
+    <el-form ref="formRef" :model="obj" :rules="ruleObj">
+      <input type="text" name="a">
+      <input type="button" value="验证" @click="$refs['formRef'].validate()">
+    </el-form>
+
   </div>
 </template>
 <script>
@@ -29,19 +34,29 @@ import Vue from 'vue'
 import svgIcon from './src/base/svgIcon'
 import Button from './src/base/Button'
 import ButtonGroup from './src/base/ButtonGroup'
+import Form from './src/dataEntry/Form'
 Vue.component('svgIcon', svgIcon)
 Vue.component('Button', Button)
 Vue.component('ButtonGroup', ButtonGroup)
+Vue.component('el-form', Form)
 //test
 import chai from 'chai'
 import spies from 'chai-spies'
 chai.use(spies)
-let expect=chai.expect
+let expect = chai.expect
 
 export default {
   data() {
     return {
-      load: true
+      load: true,
+
+      //
+      obj: {
+        a: 1111
+      },
+      ruleObj: {
+        a: { required: true, message: '请输入活动名称', trigger: 'blur' }
+      }
     }
   },
   methods: {
@@ -90,9 +105,8 @@ export default {
         }
       })
       b.$mount(div)
-      let spy = chai.spy(() => {
-      })
-      b.$on('click',spy)
+      let spy = chai.spy(() => {})
+      b.$on('click', spy)
       b.$el.click()
       expect(spy).have.been.called()
       b.$el.remove()
