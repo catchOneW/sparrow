@@ -10,8 +10,10 @@ export default {
     rules: Object,
     model: Object
   },
-  data: {
-    fields: []
+  data() {
+   return{
+      fields: []
+   }
   },
   created() {
     this.$on('el.form.addField', field => {
