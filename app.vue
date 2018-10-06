@@ -23,9 +23,17 @@
       <input type="text" name="a">
       <input type="button" value="验证" @click="$refs['formRef'].validate()">
     </el-form> -->
-    <el-input v-model="a"
+    <!-- <el-input v-model="a"
               placeholder="请输入内容"></el-input>
-<button @click="loga">log</button>
+    <button @click="loga">log</button> -->
+
+    <el-row>
+      <el-col :span="24">1</el-col>
+    </el-row>
+    <el-row :gutter="50">
+      <el-col :span="12">1</el-col>
+      <el-col :span="12">1</el-col>
+    </el-row>
   </div>
 </template>
 <script>
@@ -41,11 +49,14 @@ import Button from './src/base/Button'
 import ButtonGroup from './src/base/ButtonGroup'
 import Form from './src/dataEntry/Form'
 import { input } from './src/dataEntry/input'
+import { row, col } from './src/base/layout'
 Vue.component('svgIcon', svgIcon)
 Vue.component('Button', Button)
 Vue.component('ButtonGroup', ButtonGroup)
 Vue.component('el-form', Form)
 Vue.component('el-input', input)
+Vue.component('el-row', row)
+Vue.component('el-col', col)
 export default {
   data() {
     return {
@@ -61,9 +72,8 @@ export default {
     }
   },
   methods: {
-    loga(){
-        console.log(this.a);
-        
+    loga() {
+      console.log(this.a)
     },
     test() {
       {
