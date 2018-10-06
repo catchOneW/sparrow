@@ -26,14 +26,16 @@
     <!-- <el-input v-model="a"
               placeholder="请输入内容"></el-input>
     <button @click="loga">log</button> -->
-
-    <el-row>
+    <!-- <el-row>
       <el-col :span="24">1</el-col>
     </el-row>
+
     <el-row :gutter="50">
       <el-col :span="12">1</el-col>
       <el-col :span="12">1</el-col>
-    </el-row>
+    </el-row> -->
+
+    <button @click="showtoast">toast</button>
   </div>
 </template>
 <script>
@@ -50,6 +52,7 @@ import ButtonGroup from './src/base/ButtonGroup'
 import Form from './src/dataEntry/Form'
 import { input } from './src/dataEntry/input'
 import { row, col } from './src/base/layout'
+import { toast } from './src/notice/toast'
 Vue.component('svgIcon', svgIcon)
 Vue.component('Button', Button)
 Vue.component('ButtonGroup', ButtonGroup)
@@ -57,6 +60,15 @@ Vue.component('el-form', Form)
 Vue.component('el-input', input)
 Vue.component('el-row', row)
 Vue.component('el-col', col)
+
+Vue.prototype.$message = function({ message }) {
+  let toastComp = Vue.extend(toast)
+  let vm = new toastComp({
+    propsData: {
+      message: message
+    }
+  }).$mount(document.body)
+}
 export default {
   data() {
     return {
@@ -74,6 +86,11 @@ export default {
   methods: {
     loga() {
       console.log(this.a)
+    },
+    showtoast() {
+      this.$message({
+        message: `1111111111111`
+      })
     },
     test() {
       {
